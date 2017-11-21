@@ -3,24 +3,31 @@
 #include<algorithm>
 using namespace std;
 struct node{
-	long long int number[10];
+	long long int number;
 	int de;
 	int cai;
 	int tot;
 	int ss;
 }stu[10005];
-int n,l,h;
-void add(int p){
+long long int n;
+int l,h;
+void add(long long int p){
 	stu[p].ss=5;
 	if(stu[p].de<l||stu[p].cai<l)
 		return ;
-	if(stu[p].de>=h&&stu[p].cai>=h)
+	if(stu[p].de>=h&&stu[p].cai>=h){
 		stu[p].ss=1;
-	if(stu[p].de>=h&&&&stu[p]<h)
+		return ;
+	}
+	if(stu[p].de>=h&&stu[p].cai<h){
 		stu[p].ss=2;
-	if(stu[p].de<h&&stu.cai<stu[p].de)
+		return ;
+	}
+	if(stu[p].de<h&&stu[p].cai<stu[p].de){
 		stu[p].ss=3;
-	else stu[p].ss=4;
+		return ;
+	}
+    stu[p].ss=4;
 	return ;
 }
 bool comp(const node &p1,const node &p2){
@@ -33,19 +40,19 @@ bool comp(const node &p1,const node &p2){
 	else return p1.number<p2.number;
 } 
 int main(){
-	scanf("%d %d %d",&n,&l,&h);
-	for(int i=1;i<=n;i++){
+	scanf("%lld %d %d",&n,&l,&h);
+	for(long long int i=1;i<=n;i++){
 		scanf("%lld %d %d",&stu[i].number,&stu[i].de,&stu[i].cai);
 		stu[i].tot=stu[i].de+stu[i].cai;
 		add(i);
 	}
 	sort(stu+1,stu+n+1,comp);
-	int m=1;
-	while(stu[p].ss!=5)
+	long long int m=1;
+	while(stu[m].ss!=5)
 		m++;
 	m--;
-	pritnf("%d\n",m);
-	for(int i=1;i<=m;i++)
+	printf("%lld\n",m);
+	for(long long int i=1;i<=m;i++)
 		printf("%lld %d %d\n",stu[i].number,stu[i].de,stu[i].cai);
 	return 0;
 }
