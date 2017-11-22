@@ -3,12 +3,12 @@
 #include<algorithm>
 using namespace std;
 struct node{
-	long long int number;
+	unsigned long long int number;
 	int de;
 	int cai;
 	int tot;
 	int ss;
-}stu[10005];
+}stu[100005];
 long long int n;
 int l,h;
 void add(long long int p){
@@ -30,7 +30,7 @@ void add(long long int p){
     stu[p].ss=4;
 	return ;
 }
-bool comp(const node &p1,const node &p2){
+bool comp(node p1,node p2){
 	if(p1.ss!=p2.ss)
 		return p1.ss<p2.ss;
 	if(p1.tot!=p2.tot)
@@ -42,7 +42,7 @@ bool comp(const node &p1,const node &p2){
 int main(){
 	scanf("%lld %d %d",&n,&l,&h);
 	for(long long int i=1;i<=n;i++){
-		scanf("%lld %d %d",&stu[i].number,&stu[i].de,&stu[i].cai);
+		scanf("%llu %d %d",&stu[i].number,&stu[i].de,&stu[i].cai);
 		stu[i].tot=stu[i].de+stu[i].cai;
 		add(i);
 	}
@@ -53,6 +53,6 @@ int main(){
 	m--;
 	printf("%lld\n",m);
 	for(long long int i=1;i<=m;i++)
-		printf("%lld %d %d\n",stu[i].number,stu[i].de,stu[i].cai);
+		printf("%llu %d %d\n",stu[i].number,stu[i].de,stu[i].cai);
 	return 0;
 }
