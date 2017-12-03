@@ -12,11 +12,25 @@ int main(){
 		if(tot*2-1>n){
 			tot-=i;
 			r--;
+			break;
 		}
 	}
 	print[1]=1;
 	for(int i=2;i<=r;i++) print[i]=print[i-1]+2;
 	for(int i=r;i>=1;i--){
-		for(int i)
+		for(int j=1;j<=r-i;j++) 
+			printf(" ");
+		for(int j=1;j<=print[i];j++)
+			printf("%c",s);
+		printf("\n");
 	}
+	for(int i=2;i<=r;i++){
+		for(int j=1;j<=r-i;j++)
+			printf(" ");
+		for(int j=1;j<=print[i];j++)
+			printf("%c",s);
+		printf("\n");
+	}
+	printf("%d",n-(tot*2-1));
+	return 0;
 }
