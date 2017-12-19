@@ -1,46 +1,32 @@
-#define maxn 20
-#include<cstdio>
-#include<cstring>
-using namespace std;
-struct node{
-	char s[maxn];
-	bool key;
-}a[105];
-char m[11];
-int n,count;
-bool check(int t,char k){
-	if(m[t]==k) return true;
-	else return false;
-}
-int main(){
-	strcpy(m,"10X98765432");
-	scanf("%d",&n);
-	for(int i=1;i<=n;i++)
-		scanf("%s",a[i].s);
-	for(int i=1;i<=n;i++){
-		a[i].key=true;
-		for(int j=0;j<=16;j++){
-			int b=a[i].s[j]-48;
-			count=1;
-			if(b<0||b>9){
-				a[i].key=false;
-				break;
-			}
-			else{
-				count+=b;
-			}
-			count%=11;
-			a[i].key=check(count,a[i].s[17]);
-		}
-		printf("%d ",count);
-	}
-	bool ans=1;
-	for(int i=1;i<=n;i++){
-		if(a[i].key==0){
-			printf("%s\n",a[i].s);
-			ans=0;
-		}
-	}
-	if(ans==true) printf("All passed");
-	return 0;
-} 
+#include<stdio.h>  
+int main()  
+{  
+    int n,i,j,k;  
+    int sum,weight[17]={7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};  
+    char yan[11]={'1','0','X','9','8','7','6','5','4','3','2'};  
+    char str[100][20];  
+    while(~scanf("%d",&n))  
+    {  
+        for(i=0;i<n;i++) scanf("%s",str[i]);  
+        k=0;  
+        for(i=0;i<n;i++)  
+        {  
+            sum=0;  
+            for(j=0;j<17;j++)  
+            {  
+                if(str[i][j]<'0'||str[i][j]>'9') break;  
+                sum+=(str[i][j]-'0')*weight[j];  
+            }  
+            if(j<17)  
+            {  
+                printf("%s\n",str[i]);  
+                continue;  
+            }  
+            sum%=11;  
+            if(yan[sum]==str[i][j]) k++;  
+            else printf("%s\n",str[i]);  
+        }  
+        if(k==n) printf("All passed\n");  
+    }  
+    return 0;  
+}  
