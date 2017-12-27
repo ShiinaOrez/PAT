@@ -25,7 +25,10 @@ int main(){
 			ans[c]=a[i];
 		}
 	}
-	if(c!=0) sort(ans+1,ans+c);
+	if(c==0){
+		printf("0\n\n");return 0;
+	}
+    sort(ans+1,ans+c);
 	printf("%d\n",c);
 	for(int i=1;i<=c;i++){
 		printf("%lld",ans[i]);
